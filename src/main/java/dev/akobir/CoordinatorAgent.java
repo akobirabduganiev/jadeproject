@@ -7,6 +7,20 @@ import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 
+/**
+ The `CoordinatorAgent` is an agent in a multi-agent system that coordinates the clustering process.
+ Its role is to create and manage the clustering agents, and to collect the results of the clustering process.
+
+ When the `CoordinatorAgent` starts, it reads the data to be clustered from a file and creates a `ClustererAgent` for each cluster it wants to create.
+ It then sends each `ClustererAgent` a message containing the data to be clustered and the number of clusters to create.
+
+ The `CoordinatorAgent` also keeps track of the progress of the clustering process by receiving messages from the `ClustererAgents` containing the results of their clustering operations.
+ Once all `ClustererAgents` have finished their clustering, the `CoordinatorAgent` combines their results into a single output file and terminates the system.
+
+ In essence, the `CoordinatorAgent` acts as the central control point for the clustering process,
+ managing and coordinating the activities of the `ClustererAgents` and aggregating their results into a final output.
+ **/
+
 public class CoordinatorAgent extends Agent {
 
     private int[] clusters;
